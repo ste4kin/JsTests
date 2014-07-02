@@ -2,16 +2,37 @@ var movie1 = {
 	title: "plan 9",
 	genre: "cult classic",
 	rating: 5,
-	showtime: ["3:00pm", "7:00pm", "11:00pm"]
+	showtimes: ["3:00pm", "7:00pm", "11:00pm"]
 };
 
 var movie2 = {
 	title: "forbidden planet",
 	genre: "classic sci-fi",
 	rating: 3,
-	showtime: ["5:00pm", "9:00pm"]
+	showtimes: ["5:00pm", "9:00pm"]
 };
 
 function getNextShowing(movie) {
-	function getNextShowing
+	var now = new Date().get Time();
+	
+	for (var i = 0; i<movie.showtimes.length; i++) {
+		var showtime = getTimeFromString(movie.showtimes[i]);
+		if ((showtime - now) > 0) {
+			return "Next showing of " + movie.title + " is " + movie.showtimes[i]);
+		}
+	}
+	return null;
 }
+
+function getTimeFromString(timeString) {
+  var theTime = new Date();
+  var time = timeString.match(/(\d+) (?::(\d\d))?\s*(p?)/);
+  theTime.setHours( parseInt(time[1]) + (time[3] ? 12 : 0) );
+  theTime.setMinutes( parseInt(time[2]) || 0 );
+  return theTime.getTime();
+}
+
+var nextShowing = getNextShowing(movie1);
+alert(nextShowing);
+nextShowing = getNextShowing(movie2);
+alert(nextShowing);
