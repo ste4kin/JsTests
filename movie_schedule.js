@@ -2,7 +2,7 @@ var movie1 = {
 	title: "plan 9",
 	genre: "cult classic",
 	rating: 5,
-	showtimes: ["3:00pm", "7:00pm", "11:00pm"]
+	showtimes: ["3pm", "7pm", "11pm"]
 };
 
 var movie2 = {
@@ -13,7 +13,7 @@ var movie2 = {
 };
 
 function getNextShowing(movie) {
-	var now = new Date().get Time();
+	var now = new Date().getTime();
 	
 	for (var i = 0; i<movie.showtimes.length; i++) {
 		var showtime = getTimeFromString(movie.showtimes[i]);
